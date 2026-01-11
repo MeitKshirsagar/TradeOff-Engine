@@ -1,18 +1,49 @@
-# Option Referee
+# TradeOff Engine 🏆
 
-A comprehensive multi-criteria decision analysis tool that helps you make informed decisions by comparing multiple options across various criteria using the TOPSIS algorithm.
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)](https://jestjs.io/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
 
-## Features
+A comprehensive **multi-criteria decision analysis tool** that helps you make informed decisions by comparing multiple options across various criteria using the **TOPSIS algorithm**.
 
-- **Multi-criteria Analysis**: Compare 2-5 options across multiple weighted criteria
-- **TOPSIS Algorithm**: Industry-standard technique for preference ranking
-- **Trade-off Analysis**: Identify strengths, weaknesses, and dominance relationships
-- **Comprehensive Reports**: Generate detailed reports in JSON, Markdown, or HTML formats
-- **Property-Based Testing**: Mathematically verified correctness with 100+ test iterations
-- **Configuration Management**: Save preferences and use preset configurations
-- **Visualization Data**: Generate chart data for visual comparisons
+> **Perfect for**: Job offers, investment choices, vacation planning, technology selection, housing decisions, and any scenario where you need to weigh multiple factors.
 
-## Quick Start
+## ✨ Features
+
+- 🎯 **Multi-criteria Analysis**: Compare 2-5 options across multiple weighted criteria
+- 🧮 **TOPSIS Algorithm**: Industry-standard technique for preference ranking
+- 📊 **Trade-off Analysis**: Identify strengths, weaknesses, and dominance relationships
+- 📄 **Comprehensive Reports**: Generate detailed reports in JSON, Markdown, or HTML formats
+- 🧪 **Property-Based Testing**: Mathematically verified correctness with 100+ test iterations
+- ⚙️ **Configuration Management**: Save preferences and use preset configurations
+- 📈 **Visualization Data**: Generate chart data for visual comparisons
+- 🔒 **Type Safety**: Full TypeScript implementation with comprehensive type definitions
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+git clone https://github.com/MeitKshirsagar/TradeOff-Engine.git
+cd TradeOff-Engine
+npm install
+```
+
+### Instant Test
+
+```bash
+# Quick JavaScript test (no compilation needed)
+node quick-test.js
+
+# Full TypeScript examples
+npx ts-node test-example.ts
+
+# Your custom comparison
+npx ts-node my-comparison.ts
+```
+
+### Basic Usage
 
 ```typescript
 import { RefereeSystem } from 'option-referee';
@@ -84,193 +115,130 @@ if (result.success) {
 }
 ```
 
-## Installation
+## 🎯 Real-World Examples
 
-```bash
-npm install
+### 💼 Job Comparison
+```typescript
+const jobs = [
+  { id: 'google', name: 'Google SWE', scores: new Map([
+    ['salary', 180000], ['wlb', 70], ['growth', 85], ['location', 60]
+  ])},
+  { id: 'startup', name: 'Startup CTO', scores: new Map([
+    ['salary', 120000], ['wlb', 50], ['growth', 95], ['location', 80]
+  ])},
+];
+
+const criteria = [
+  { id: 'salary', weight: 40, direction: 'maximize', scale: {min: 80000, max: 200000} },
+  { id: 'wlb', weight: 30, direction: 'maximize', scale: {min: 40, max: 90} },
+  { id: 'growth', weight: 20, direction: 'maximize', scale: {min: 60, max: 100} },
+  { id: 'location', weight: 10, direction: 'maximize', scale: {min: 50, max: 100} },
+];
 ```
 
-## Development
+### 🏖️ Vacation Planning
+```typescript
+const destinations = [
+  { id: 'paris', name: 'Paris', scores: new Map([
+    ['cost', 2500], ['weather', 70], ['culture', 95], ['activities', 90]
+  ])},
+  { id: 'bali', name: 'Bali', scores: new Map([
+    ['cost', 1200], ['weather', 85], ['culture', 80], ['activities', 85]
+  ])},
+];
+```
+
+### 💰 Investment Analysis
+```typescript
+const investments = [
+  { id: 'stocks', name: 'Index Funds', scores: new Map([
+    ['return', 8], ['risk', 30], ['liquidity', 95], ['time', 10]
+  ])},
+  { id: 'realestate', name: 'Real Estate', scores: new Map([
+    ['return', 12], ['risk', 50], ['liquidity', 20], ['time', 80]
+  ])},
+];
+```
+
+## 📊 Understanding Results
+
+### Rankings
+- **Closeness Score**: 0-1 scale (higher = better overall choice)
+- **Rank**: 1 = best option according to your weights
+- **Strengths**: Areas where option performs in top 25%
+- **Weaknesses**: Areas where option performs in bottom 25%
+
+### Recommendations
+- **Best Overall**: Highest scoring option
+- **Compromise**: Balanced option on Pareto frontier
+- **Confidence**: Algorithm certainty (higher = more decisive)
+
+## 🧪 Testing & Quality
 
 ```bash
+# Run all tests (149 tests across 9 suites)
+npm test
+
 # Build the project
 npm run build
 
-# Run tests
-npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
+# Test with coverage
 npm run test:coverage
 ```
 
-## Using Preset Configurations
+**Quality Metrics:**
+- ✅ 149 passing tests
+- ✅ Property-based testing with 100+ iterations per property
+- ✅ Mathematical correctness verification
+- ✅ Full TypeScript type safety
+- ✅ Comprehensive error handling
 
-```typescript
-// Get available presets
-const presets = system.getPresetConfigurations();
-console.log('Available presets:', presets.map(p => p.name));
+## 🏗️ Architecture
 
-// Apply a preset
-const laptopPreset = system.applyPresetConfiguration('laptop_comparison');
-if (laptopPreset.success) {
-  const constraints = laptopPreset.data;
-  // Use the preset constraints for your comparison
-}
+```
+src/
+├── types/          # Core type definitions
+├── managers/       # Data management (Options, Constraints, Config)
+├── validators/     # Input validation and sanitization
+├── engines/        # TOPSIS algorithm implementation
+├── analyzers/      # Trade-off analysis and recommendations
+├── generators/     # Report generation (JSON, MD, HTML)
+└── RefereeSystem.ts # Main API orchestrator
 ```
 
-## Advanced Usage
+## 📚 Documentation
 
-### Step-by-Step Comparison
+- **[TESTING.md](TESTING.md)** - Comprehensive testing guide
+- **[Design Document](.kiro/specs/option-referee/design.md)** - Technical architecture
+- **[Requirements](.kiro/specs/option-referee/requirements.md)** - Formal specifications
+- **[Implementation Tasks](.kiro/specs/option-referee/tasks.md)** - Development roadmap
 
-```typescript
-import { RefereeSystem } from 'option-referee';
-
-const system = new RefereeSystem();
-await system.initialize();
-
-// Add options one by one
-system.addOption({
-  id: 'option1',
-  name: 'Option 1',
-  scores: new Map([['criteria1', 80]]),
-});
-
-// Add constraints
-system.addConstraint({
-  id: 'criteria1',
-  name: 'Important Criteria',
-  weight: 100,
-  type: 'performance',
-  direction: 'maximize',
-  scale: { min: 0, max: 100 },
-});
-
-// Check if ready for comparison
-const readiness = system.validateReadiness();
-if (readiness.success) {
-  const comparison = await system.quickCompare(
-    system.getOptions(),
-    system.getConstraints()
-  );
-}
-```
-
-## Understanding the Results
-
-### Rankings
-Each option receives a closeness score (0-1) and rank:
-- Higher closeness scores indicate better overall performance
-- Rank 1 is the best option according to your criteria weights
-
-### Trade-off Analysis
-- **Strengths**: Areas where an option performs in the top 25%
-- **Weaknesses**: Areas where an option performs in the bottom 25%
-- **Dominance**: When one option is better in all criteria
-- **Pareto Frontier**: Non-dominated options offering different trade-offs
-
-### Recommendations
-- **Best Overall**: Highest-scoring option
-- **Compromise**: Balanced option on the Pareto frontier
-- **Avoid**: Dominated option with significant weaknesses
-
-## API Reference
-
-### RefereeSystem
-
-Main class for performing comparisons.
-
-#### Methods
-
-- `initialize(configKey?: string)`: Initialize the system
-- `performComparison(request: ComparisonRequest)`: Perform full comparison
-- `quickCompare(options, constraints)`: Quick comparison with HTML output
-- `addOption(option: Option)`: Add an option
-- `addConstraint(constraint: Constraint)`: Add a constraint
-- `getPresetConfigurations()`: Get available presets
-- `applyPresetConfiguration(id: string)`: Apply a preset
-- `validateReadiness()`: Check if ready for comparison
-
-### Types
-
-#### Option
-```typescript
-interface Option {
-  id: string;
-  name: string;
-  description?: string;
-  scores: Map<string, number>; // constraint_id -> score
-}
-```
-
-#### Constraint
-```typescript
-interface Constraint {
-  id: string;
-  name: string;
-  weight: number; // 0-100
-  type: 'cost' | 'performance' | 'efficiency' | 'custom';
-  direction: 'maximize' | 'minimize';
-  scale: { min: number; max: number };
-}
-```
-
-## Testing
-
-The system includes comprehensive testing with property-based tests:
-
-```bash
-npm test
-```
-
-- **149 tests** across 9 test suites
-- **Property-based testing** with 100+ iterations per property
-- **Integration tests** for end-to-end workflows
-- **Unit tests** for individual components
-
-## Algorithm Details
-
-### TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution)
-
-1. **Normalization**: Vector normalization of the decision matrix
-2. **Weighting**: Apply user-defined weights to normalized scores
-3. **Ideal Solutions**: Calculate positive and negative ideal solutions
-4. **Distance Calculation**: Euclidean distance to ideal solutions
-5. **Closeness Score**: Relative closeness to the positive ideal solution
-
-### Property-Based Testing
-
-The system uses property-based testing to verify mathematical correctness:
-- **Invariants**: Properties that remain constant (e.g., ranking consistency)
-- **Round-trip Properties**: Operations that should return to original state
-- **Metamorphic Properties**: Relationships between inputs and outputs
-- **Error Conditions**: Proper handling of invalid inputs
-
-## Architecture
-
-The system is built with a modular architecture:
-
-- **RefereeSystem**: Main API that orchestrates all components
-- **Managers**: Handle option and constraint data management
-- **Engines**: Implement TOPSIS algorithm and scoring logic
-- **Analyzers**: Generate trade-off analysis and recommendations
-- **Generators**: Create reports and visualizations
-- **Validators**: Ensure data integrity and validation
-
-## License
-
-MIT License - see LICENSE file for details.
-
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Add tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
+4. Ensure all tests pass (`npm test`)
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
-## Support
+## 📄 License
 
-For questions and support, please open an issue on GitHub.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **TOPSIS Algorithm**: Technique for Order of Preference by Similarity to Ideal Solution
+- **Property-Based Testing**: Inspired by QuickCheck and Hypothesis
+- **Multi-Criteria Decision Analysis**: Academic research in decision science
+
+## 📞 Support
+
+- 🐛 **Issues**: [GitHub Issues](https://github.com/MeitKshirsagar/TradeOff-Engine/issues)
+- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/MeitKshirsagar/TradeOff-Engine/discussions)
+- 📧 **Contact**: [Your Email]
+
+---
+
+**Made with ❤️ for better decision making**
