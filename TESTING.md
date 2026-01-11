@@ -1,16 +1,16 @@
-# 🧪 How to Test The Referee
+# Testing Guide
 
-The Referee is ready to use! Here are several ways to test it yourself:
+The TradeOff Engine is ready to use! Here are several ways to test it yourself:
 
-## 🚀 Quick Tests
+## Quick Tests
 
-### 1. **Instant Test** (JavaScript - No compilation needed)
+### 1. Instant Test (JavaScript - No compilation needed)
 ```bash
 node quick-test.js
 ```
 This runs a phone comparison example and builds the project automatically.
 
-### 2. **TypeScript Examples** (More detailed)
+### 2. TypeScript Examples (More detailed)
 ```bash
 # Full featured test with 2 examples
 npx ts-node test-example.ts
@@ -19,12 +19,12 @@ npx ts-node test-example.ts
 npx ts-node my-comparison.ts
 ```
 
-### 3. **Run All Tests** (Verify everything works)
+### 3. Run All Tests (Verify everything works)
 ```bash
 npm test
 ```
 
-## 📝 Create Your Own Comparison
+## Create Your Own Comparison
 
 ### Easy Way: Edit `my-comparison.ts`
 
@@ -72,7 +72,7 @@ const criteria = [
 ];
 ```
 
-## 🎯 Understanding the Results
+## Understanding the Results
 
 ### Rankings
 - **Closeness Score**: 0-1 scale (higher = better overall choice)
@@ -90,7 +90,7 @@ const criteria = [
 - **Pareto Frontier**: Options that aren't dominated by others
 - **Trade-offs**: What you gain/lose with each choice
 
-## 🔧 Advanced Usage
+## Advanced Usage
 
 ### Using the API Directly
 ```typescript
@@ -123,7 +123,7 @@ const result = await system.performComparison({
 });
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 **TypeScript Errors?**
 ```bash
@@ -143,8 +143,8 @@ npm test
 **Want to see all available methods?**
 Check the `src/RefereeSystem.ts` file for the complete API.
 
-## 🎉 You're Ready!
+## You're Ready!
 
-The Referee can compare anything with numerical criteria. Just define your options, set your priorities (weights), and let the TOPSIS algorithm find the mathematically optimal choice for you!
+The TradeOff Engine can compare anything with numerical criteria. Just define your options, set your priorities (weights), and let the TOPSIS algorithm find the mathematically optimal choice for you!
 
-**Happy comparing! 🏆**
+**Happy comparing!**

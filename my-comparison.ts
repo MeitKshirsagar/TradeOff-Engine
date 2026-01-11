@@ -9,12 +9,12 @@ import { RefereeSystem } from './src/RefereeSystem';
 import { Option, Constraint } from './src/types/core';
 
 async function myComparison() {
-  console.log('🏆 My Custom Comparison\n');
+  console.log('My Custom Comparison\n');
 
   const system = new RefereeSystem();
   await system.initialize();
 
-  // 🎯 MODIFY THIS SECTION TO TEST YOUR OWN COMPARISON
+  // MODIFY THIS SECTION TO TEST YOUR OWN COMPARISON
   // ================================================
 
   // Define your options (2-5 options)
@@ -84,7 +84,7 @@ async function myComparison() {
   // ================================================
 
   try {
-    console.log('🔄 Running comparison...\n');
+    console.log('Running comparison...\n');
 
     const result = await system.performComparison({
       options: myOptions,
@@ -93,12 +93,12 @@ async function myComparison() {
     });
 
     if (result.success) {
-      console.log('✅ SUCCESS! Here are your results:\n');
+      console.log('SUCCESS! Here are your results:\n');
       
       // Show the winner
       const winner = result.data.report.rankings[0];
       if (winner) {
-        console.log(`🏆 WINNER: ${winner.option.name}`);
+        console.log(`WINNER: ${winner.option.name}`);
         console.log(`   Score: ${winner.closenessScore.toFixed(3)}`);
         console.log(`   Strengths: ${winner.strengthAreas.join(', ')}`);
         if (winner.weaknessAreas.length > 0) {
@@ -108,31 +108,31 @@ async function myComparison() {
       }
 
       // Show all rankings
-      console.log('📊 FULL RANKINGS:');
+      console.log('FULL RANKINGS:');
       result.data.report.rankings.forEach((ranking, index) => {
-        const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '  ';
+        const medal = index === 0 ? '[1st]' : index === 1 ? '[2nd]' : index === 2 ? '[3rd]' : '     ';
         console.log(`${medal} ${index + 1}. ${ranking.option.name} (${ranking.closenessScore.toFixed(3)})`);
       });
       console.log();
 
       // Show recommendation
       const rec = result.data.report.executiveSummary.topRecommendation;
-      console.log('💡 RECOMMENDATION:');
+      console.log('RECOMMENDATION:');
       console.log(`   ${rec.reasoning}`);
       console.log(`   Confidence: ${(rec.confidence * 100).toFixed(1)}%\n`);
 
       // Show key insights
-      console.log('🔍 KEY INSIGHTS:');
+      console.log('KEY INSIGHTS:');
       result.data.report.executiveSummary.keyFindings.forEach(finding => {
         console.log(`   • ${finding}`);
       });
 
     } else {
-      console.error('❌ Comparison failed:', result.error);
+      console.error('Comparison failed:', result.error);
     }
 
   } catch (error) {
-    console.error('❌ Error:', error);
+    console.error('Error:', error);
   }
 }
 
@@ -140,7 +140,7 @@ async function myComparison() {
 myComparison().catch(console.error);
 
 /*
-🎯 HOW TO CUSTOMIZE THIS:
+HOW TO CUSTOMIZE THIS:
 
 1. CHANGE THE OPTIONS:
    - Update myOptions array with your choices

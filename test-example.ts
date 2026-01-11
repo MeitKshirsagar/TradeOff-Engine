@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 
 /**
- * Interactive test script for The Referee
+ * Interactive test script for The TradeOff Engine
  * Run with: npx ts-node test-example.ts
  */
 
@@ -9,14 +9,14 @@ import { RefereeSystem } from './src/RefereeSystem';
 import { Option, Constraint } from './src/types/core';
 
 async function testReferee() {
-  console.log('🏆 Testing The Referee - Option Comparison Tool\n');
+  console.log('Testing The TradeOff Engine - Option Comparison Tool\n');
 
   // Initialize the system
   const system = new RefereeSystem();
   await system.initialize();
 
   // Example 1: Laptop Comparison
-  console.log('📱 Example 1: Laptop Comparison');
+  console.log('Example 1: Laptop Comparison');
   console.log('===============================');
 
   const laptops: Option[] = [
@@ -98,10 +98,10 @@ async function testReferee() {
     });
 
     if (result.success) {
-      console.log('✅ Comparison successful!\n');
+      console.log('Comparison successful!\n');
       
       // Show rankings
-      console.log('🏆 RANKINGS:');
+      console.log('RANKINGS:');
       result.data.report.rankings.forEach((ranking, index) => {
         console.log(`${index + 1}. ${ranking.option.name} (Score: ${ranking.closenessScore.toFixed(3)})`);
         console.log(`   Strengths: ${ranking.strengthAreas.join(', ')}`);
@@ -109,32 +109,32 @@ async function testReferee() {
       });
 
       // Show top recommendation
-      console.log('💡 TOP RECOMMENDATION:');
+      console.log('TOP RECOMMENDATION:');
       const topRec = result.data.report.executiveSummary.topRecommendation;
       console.log(`${topRec.optionId}: ${topRec.reasoning}`);
       console.log(`Confidence: ${(topRec.confidence * 100).toFixed(1)}%\n`);
 
       // Show key findings
-      console.log('🔍 KEY FINDINGS:');
+      console.log('KEY FINDINGS:');
       result.data.report.executiveSummary.keyFindings.forEach(finding => {
         console.log(`• ${finding}`);
       });
 
-      console.log('\n📄 Full report saved as markdown format');
+      console.log('\nFull report saved as markdown format');
       if (result.data.exportedReport) {
         console.log('Report length:', result.data.exportedReport.length, 'characters');
       }
 
     } else {
-      console.error('❌ Comparison failed:', result.error);
+      console.error('Comparison failed:', result.error);
     }
 
   } catch (error) {
-    console.error('❌ Error during comparison:', error);
+    console.error('Error during comparison:', error);
   }
 
   // Example 2: Quick comparison with different data
-  console.log('\n\n🍕 Example 2: Restaurant Comparison');
+  console.log('\n\nExample 2: Restaurant Comparison');
   console.log('===================================');
 
   const restaurants: Option[] = [
@@ -209,7 +209,7 @@ async function testReferee() {
     const quickResult = await system.quickCompare(restaurants, restaurantConstraints);
     
     if (quickResult.success) {
-      console.log('✅ Quick comparison successful!');
+      console.log('Quick comparison successful!');
       const topRanking = quickResult.data.report.rankings[0];
       if (topRanking) {
         console.log('Winner:', topRanking.option.name);
@@ -220,11 +220,11 @@ async function testReferee() {
     }
 
   } catch (error) {
-    console.error('❌ Quick comparison failed:', error);
+    console.error('Quick comparison failed:', error);
   }
 
-  console.log('\n🎉 Test completed! The Referee is working perfectly.');
-  console.log('\n💡 Try creating your own comparison by modifying the options and constraints above!');
+  console.log('\nTest completed! The TradeOff Engine is working perfectly.');
+  console.log('\nTry creating your own comparison by modifying the options and constraints above!');
 }
 
 // Run the test

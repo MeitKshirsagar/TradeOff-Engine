@@ -8,11 +8,11 @@
 const { RefereeSystem } = require('./dist/RefereeSystem');
 
 async function quickTest() {
-  console.log('🏆 Quick Test - The Referee\n');
+  console.log('Quick Test - The TradeOff Engine\n');
 
   try {
     // Build first if needed
-    console.log('📦 Building project...');
+    console.log('Building project...');
     const { execSync } = require('child_process');
     execSync('npm run build', { stdio: 'inherit' });
     
@@ -88,7 +88,7 @@ async function quickTest() {
       }
     ];
 
-    console.log('📱 Comparing phones...\n');
+    console.log('Comparing phones...\n');
 
     const result = await system.performComparison({
       options: phones,
@@ -97,32 +97,32 @@ async function quickTest() {
     });
 
     if (result.success) {
-      console.log('✅ SUCCESS!\n');
+      console.log('SUCCESS!\n');
       
-      console.log('🏆 RANKINGS:');
+      console.log('RANKINGS:');
       result.data.report.rankings.forEach((ranking, index) => {
-        const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉';
+        const medal = index === 0 ? '[1st]' : index === 1 ? '[2nd]' : '[3rd]';
         console.log(`${medal} ${ranking.option.name} - Score: ${ranking.closenessScore.toFixed(3)}`);
       });
 
-      console.log('\n💡 RECOMMENDATION:');
+      console.log('\nRECOMMENDATION:');
       const rec = result.data.report.executiveSummary.topRecommendation;
       console.log(`${rec.reasoning}`);
       console.log(`Confidence: ${(rec.confidence * 100).toFixed(1)}%`);
 
-      console.log('\n🎉 The Referee is working perfectly!');
-      console.log('\n📝 To create your own comparison:');
+      console.log('\nThe TradeOff Engine is working perfectly!');
+      console.log('\nTo create your own comparison:');
       console.log('   1. Edit my-comparison.ts with your options');
       console.log('   2. Run: npx ts-node my-comparison.ts');
       console.log('   3. Or use the full example: npx ts-node test-example.ts');
 
     } else {
-      console.error('❌ Test failed:', result.error);
+      console.error('Test failed:', result.error);
     }
 
   } catch (error) {
-    console.error('❌ Error:', error.message);
-    console.log('\n💡 Try running: npm run build');
+    console.error('Error:', error.message);
+    console.log('\nTry running: npm run build');
   }
 }
 
