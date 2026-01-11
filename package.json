@@ -1,7 +1,7 @@
 {
-  "name": "option-referee",
+  "name": "tradeoff-engine",
   "version": "1.0.0",
-  "description": "A comparison tool that evaluates 2-5 options against user constraints using TOPSIS algorithm",
+  "description": "A comprehensive multi-criteria decision analysis tool using TOPSIS algorithm for comparing options across weighted criteria",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,12 +10,38 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "dev": "ts-node src/index.ts",
-    "lint": "eslint src/**/*.ts",
-    "format": "prettier --write src/**/*.ts"
+    "lint": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "start": "node dist/index.js",
+    "example": "npx ts-node test-example.ts",
+    "quick-test": "node quick-test.js",
+    "custom-test": "npx ts-node my-comparison.ts"
   },
-  "keywords": ["comparison", "decision-analysis", "topsis", "multi-criteria"],
-  "author": "Option Referee Team",
+  "keywords": [
+    "decision-analysis", 
+    "topsis", 
+    "multi-criteria", 
+    "comparison", 
+    "tradeoff", 
+    "optimization", 
+    "typescript", 
+    "property-based-testing"
+  ],
+  "author": {
+    "name": "Meit Kshirsagar",
+    "url": "https://github.com/MeitKshirsagar"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MeitKshirsagar/TradeOff-Engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MeitKshirsagar/TradeOff-Engine/issues"
+  },
+  "homepage": "https://github.com/MeitKshirsagar/TradeOff-Engine#readme",
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "@types/node": "^20.0.0",
